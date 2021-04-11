@@ -8,5 +8,5 @@ https://devzone.nordicsemi.com/nordic/nrf-connect-sdk-guides/b/getting-started/p
 Use the nRF connect app to setup your system. http://developer.nordicsemi.com/nRF_Connect_SDK/doc/1.4.2/nrf/gs_assistant.html#gs-app-gsa
 Pacman was used successfully to set this up. Some packages were named slightly different and the jlink install had to come separately from the AUR.
 ### Troubleshooting
-#### create_nordic_project.py failed (1).
-This is avoided if "Clean Build" is checked when opening an nRF Connect project.
+#### Moving examples from the SDK directory
+https://devzone.nordicsemi.com/f/nordic-q-a/44638/how-to-move-an-sdk-example-out-of-the-sdk-tree
