@@ -10,3 +10,4 @@ Pacman was used successfully to set this up. Some packages were named slightly d
 ### Troubleshooting
 #### Moving examples from the SDK directory
 https://devzone.nordicsemi.com/f/nordic-q-a/44638/how-to-move-an-sdk-example-out-of-the-sdk-tree
+Remove the KConfig directory and the build_<board> directory, then open the project with "Clean Build" checked.
