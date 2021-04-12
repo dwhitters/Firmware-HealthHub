@@ -22,3 +22,4 @@ Remove the KConfig directory and the build_<board> directory, then open the proj
  - Specify target interface "SWD" with "S"
  - Hit enter for default target interface speed
  - type "loadfile" followed by the path to the hex or bin file to flash
+ - Remove the debugger cable and power cycle the device.
