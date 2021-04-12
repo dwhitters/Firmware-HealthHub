@@ -15,3 +15,10 @@ Run **Run CMake** under the **Project** tab on the toolbar after any updates to 
 #### Moving examples from the SDK directory
 https://devzone.nordicsemi.com/f/nordic-q-a/44638/how-to-move-an-sdk-example-out-of-the-sdk-tree
 Remove the KConfig directory and the build_<board> directory, then open the project with "Clean Build" checked.
+## Flashing
+ - Run the commandline utility JLinkExe
+ - type "connect"
+ - Specify the device "NRF52832_XXAA" (It should be the default, pressing enter selects the default)
+ - Specify target interface "SWD" with "S"
+ - Hit enter for default target interface speed
+ - type "loadfile" followed by the path to the hex or bin file to flash
