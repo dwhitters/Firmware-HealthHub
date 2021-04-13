@@ -1,0 +1,17 @@
+identifier: health_hub
+name: health_hub
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+ram: 64
+flash: 512
+supported:
+  - adc
+  - gpio
+  - counter
+  - nvs
+  - pwm
+  - watchdog

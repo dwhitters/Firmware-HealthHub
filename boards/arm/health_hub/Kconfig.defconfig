@@ -1,0 +1,11 @@
+# Health Hub board configuration
+
+if HEALTH_HUB_NRF52832
+
+config BOARD
+	default "health_hub"
+
+config BT_CTLR
+	default BT
+
+endif

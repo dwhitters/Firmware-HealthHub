@@ -1,0 +1,5 @@
+# Health Hub board configuration
+
+config HEALTH_HUB_NRF52832
+	bool "Health Hub NRF52832"
+	depends on SOC_NRF52832_QFAA
