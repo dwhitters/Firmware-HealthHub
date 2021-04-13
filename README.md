@@ -1,5 +1,6 @@
 # Firmware-HealthHub
 The firmware for the Nordic nrf52832 Bluetooth 5.2 SOC. This is contained in the FCC certified Fanstel BT832 MOC.
+It runs on a custom [PCB](https://github.com/dwhitters/KiCad-HealthHub).
 It will transport ECG data to David Aldon's [app](https://github.com/DaveAldon/Health-Hub-Mobile).
 ## Development
 The Nordic toolchain and the SEGGER embedded studio were used to develop this. 
