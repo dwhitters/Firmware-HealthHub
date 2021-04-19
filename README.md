@@ -17,7 +17,7 @@ Run **Run CMake** under the **Project** tab on the toolbar after any updates to 
 https://devzone.nordicsemi.com/f/nordic-q-a/44638/how-to-move-an-sdk-example-out-of-the-sdk-tree
 Remove the KConfig directory and the build_<board> directory, then open the project with "Clean Build" checked.
 ### Logging
-Segger's RTT [Tutorial](https://www.segger.com/products/debug-probes/j-link/tools/rtt-viewer/) outlines how to connect to the device and view the logs.
+Segger's RTT [Tutorial](https://www.segger.com/products/debug-probes/j-link/tools/rtt-viewer/) outlines how to connect to the device and view the logs. The RTTViewer is easy to use and will be used in stand-alone mode most of the time. 
 Nordic's [documentation](https://infocenter.nordicsemi.com/index.jsp?topic=%2Fcom.nordic.infocenter.sdk5.v12.3.0%2Fgroup__nrf__log__config.html&anchor=ga3016ad60bd2f3cd631d8371b2f98b74e) covers the firmware implementation.
 ## Flashing
  * Target Interface: SWD
