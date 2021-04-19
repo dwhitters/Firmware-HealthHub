@@ -24,7 +24,13 @@
 #include <bluetooth/services/bas.h>
 #include <bluetooth/services/hrs.h>
 
+#include <logging/log.h>
+
 #include "cts.h"
+
+/* Initialize the RTT logging. */
+#define LOG_MODULE_NAME health_hub	
+LOG_MODULE_REGISTER(LOG_MODULE_NAME);
 
 /* Custom Service Variables */
 static struct bt_uuid_128 vnd_uuid = BT_UUID_INIT_128(
@@ -321,6 +327,7 @@ static void hrs_notify(void)
 void main(void)
 {
 	int err;
+	LOG_INF("Start");
 
 	err = bt_enable(NULL);
 	if (err) {
