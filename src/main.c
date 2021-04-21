@@ -26,8 +26,6 @@
 
 #include <logging/log.h>
 
-#include "cts.h"
-
 /* Initialize the RTT logging. */
 #define LOG_MODULE_NAME health_hub	
 LOG_MODULE_REGISTER(LOG_MODULE_NAME);
@@ -227,8 +225,7 @@ static const struct bt_data ad[] = {
 	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
 	BT_DATA_BYTES(BT_DATA_UUID16_ALL,
 		      BT_UUID_16_ENCODE(BT_UUID_HRS_VAL),
-		      BT_UUID_16_ENCODE(BT_UUID_BAS_VAL),
-		      BT_UUID_16_ENCODE(BT_UUID_CTS_VAL)),
+		      BT_UUID_16_ENCODE(BT_UUID_BAS_VAL)),
 	BT_DATA_BYTES(BT_DATA_UUID128_ALL,
 		      0xf0, 0xde, 0xbc, 0x9a, 0x78, 0x56, 0x34, 0x12,
 		      0x78, 0x56, 0x34, 0x12, 0x78, 0x56, 0x34, 0x12),
@@ -258,8 +255,6 @@ static void bt_ready(void)
 	int err;
 
 	printk("Bluetooth initialized\n");
-
-	cts_init();
 
 	if (IS_ENABLED(CONFIG_SETTINGS)) {
 		settings_load();
@@ -345,9 +340,6 @@ void main(void)
 	 */
 	while (1) {
 		k_sleep(K_SECONDS(1));
-
-		/* Current Time Service updates only when time is changed */
-		cts_notify();
 
 		/* Heartrate measurements simulation */
 		hrs_notify();
