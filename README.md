@@ -12,6 +12,8 @@ Use the nRF connect app to setup your system. http://developer.nordicsemi.com/nR
 Pacman was used successfully to set this up. Some packages were named slightly different and the jlink install had to come separately from the AUR.
 ### Building
 Run **Run CMake** under the **Project** tab on the toolbar after any updates to the devicetree. 
+#### Commandline 
+Follow the instructions [here](https://devzone.nordicsemi.com/f/nordic-q-a/44879/build-nrf-connect-sdk-project-via-command-line).
 ### Troubleshooting
 #### Moving examples from the SDK directory
 https://devzone.nordicsemi.com/f/nordic-q-a/44638/how-to-move-an-sdk-example-out-of-the-sdk-tree
