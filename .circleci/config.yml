@@ -1,0 +1,54 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+jobs: 
+  build:
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+
+    steps: 
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "/home/circleci/project/requirements.txt" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "/home/circleci/project/requirements.txt" }}
+      - run:
+          name: Install Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install ninja-build
+            pip3 install --user -U west
+            echo 'export PATH=~/.local/bin:"$PATH"' >> ~/.bashrc
+            source ~/.bashrc
+            mkdir ~/ncs && cd ~/ncs
+            west init -m https://github.com/nrfconnect/sdk-nrf --mr v1.5.1
+            west update
+            west zephyr-export
+            sed -i /$"west"/d nrf/scripts/requirements-doc.txt
+            pip3 install --user -r zephyr/scripts/requirements.txt
+            pip3 install --user -r nrf/scripts/requirements.txt
+            pip3 install --user -r bootloader/mcuboot/scripts/requirements.txt
+            cd ..
+            wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2019q4/gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2
+            mkdir ~/gnuarmemb
+            tar -xjf gcc-arm-none-eabi-9-2019-q4-major-x86_64-linux.tar.bz2 --directory ~/gnuarmemb --strip 1
+            printf "export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb\nexport GNUARMEMB_TOOLCHAIN_PATH=\"~/gnuarmemb\"" >> ~/.zephyrrc
+
+      - checkout
+
+      - run: 
+          name: Build
+          command: |
+            source ~/ncs/zephyr/zephyr-env.sh
+            west build -b health_hub -d build
+
+      - store_artifacts:
+          path: ./build/zephyr/zephyr.bin
+      - store_artifacts:
+          path: ./build/zephyr/zephyr.map
+      - store_artifacts:
+          path: ./build/zephyr/zephyr.dts

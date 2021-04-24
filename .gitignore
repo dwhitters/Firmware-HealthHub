@@ -51,5 +51,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-# Build Directory
+# Build Directory when building in SEGGER Embedded Studio
 build_nrf52dk_nrf52832
+# Build Directory when building from the commandline
+build 
+
+# Kconfig
+boards/Kconfig
